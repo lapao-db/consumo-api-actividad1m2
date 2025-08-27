@@ -1,0 +1,12 @@
+{
+    "id" : 1,
+    "nombre" : "Laura Daza",
+    "ocupacion" : "Analista de Soporte y pruebas de Software",
+    "direccion" : {
+        "ciudad" : "Bogotá",
+        "pais" : "Colombia"
+    },
+    "hobbies" : ["manualidades", "senderismo", "repostería"],
+    "esCasada" : false
+
+}
