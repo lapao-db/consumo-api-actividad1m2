@@ -51,8 +51,24 @@
     </header>
     <main>
         <h1>Peliculas Studio Ghibli</h1>
+        <section class="container py-4">
+            <div class="row mb-3">
+                <div class="col-12 col-md-8">
+                    <label for="buscarInput" class="form-label">Buscar por título</label>
+                    <input id="buscarInput" class="form-control" placeholder="Ej: Totoro" />
+                    
+                </div>
+                <div class="col-md-2 my-4 d-flex justify-content-between">
+                    <button class="btn btn-primary w-100 btn-ghibli " onclick="buscarPeliculas()">Buscar</button>
+                </div>
+                <div class="col-12 d-flex align-items-end">
+                    <div id="resultsInfo" class="row ms-md-3" aria-live="polite"></div>
+                </div>
+            </div>   
+        </section>
+
         <section>
-            <button onclick="cargarApi()">Mostrar Peliculas</button>
+            <button class="btn btn-outline-warning " onclick="cargarApi()">Mostrar Todas Peliculas</button>
         </section>
         <section id="datos">
 

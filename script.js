@@ -1,7 +1,7 @@
 //URL 
 const API_URL = 'https://ghibliapi.dev/films';
 let perfilVisible = false;
-let todasPeliculas = [];
+let todasPeliculas = []; //Guarda todas las peliculas
 
 
 // OBTENER INFORMACION PERFIL
@@ -52,3 +52,72 @@ const cargarApi = async() => {
         alert ("Hubo un error inesperado, intente más tarde") 
     }
 }
+
+// TARJETAS HTML DE PELICULAS
+function mostrarPelis(movies){
+const resultsContainer = document.getElementById('resultsInfo');
+    
+    if (!movies || movies.length === 0) {
+        resultsContainer.innerHTML = `
+            <div class="col-12">
+                <div class="alert alert-info text-center">
+                    <h5>🔍 No se encontraron películas</h5>
+                    <p>Intenta con otro filtro o búsqueda</p>
+                </div>
+            </div>
+        `;
+        return;
+    }
+    const moviesHTML= movies.map(movie => {
+        // Variables simples para los datos
+        const title = movie.title || 'Sin título';
+        const year = movie.release_date || 'N/A';
+        const director = movie.director || 'Desconocido';
+        const image = movie.image || 'https://via.placeholder.com/300x400';
+        const description = movie.description || 'Sin descripción';
+        
+        return `
+            <div class="col-lg-4 col-md-6">
+                <div class="card mb-3">
+                    <img src="${image}" class="card-img-top" alt="${title}">
+                    <div class="card-body">
+                        <h5 class="card-title">${title}</h5>
+                        <p class="text-muted">Director: ${director}</p>
+                        <p class="text-muted">Año: ${year}</p>
+                        <p class="card-text">${description.substring(0, 100)}...</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    }).join('');
+   
+
+    resultsContainer.innerHTML = moviesHTML;
+}
+
+
+
+// BUSQUEDA INPUT TEXTO
+    const buscarPeliculas = async()=> {
+            const txtIngresado = document.getElementById('buscarInput').value.trim().toLowerCase();
+            
+            if (!txtIngresado) {
+                alert('Por favor, ingresa el nombre de una película');
+                return;
+            }
+
+            //showLoading();
+            
+            if (todasPeliculas.length === 0) {
+                await cargarApi();
+            }
+
+            const filtroPeli = todasPeliculas.filter(movie => 
+                movie.title.toLowerCase().includes(txtIngresado) ||
+                movie.original_title.toLowerCase().includes(txtIngresado) ||
+                movie.description.toLowerCase().includes(txtIngresado)
+            );
+
+            mostrarPelis(filtroPeli);
+            //hideLoading();
+        }
