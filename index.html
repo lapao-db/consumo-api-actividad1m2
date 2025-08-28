@@ -32,16 +32,16 @@
             Consumo Api Peliculas
             </a>
             <section>
-                <button id="btn-info" onclick="cargarInformacion()">Mostrar Información Perfil</button>
+                <!-- <button id="btn-info" onclick="cargarInformacion()">Mostrar Información Perfil</button> -->
                     
                 <!-- Botones de control vista -->
                     <div class="text-center mb-4">
-                        <button class="btn me-2" onclick="mostrarTarjeta()">
+                        <button class="btn me-2" onclick="cargarInformacion(),mostrarTarjeta()">
                             <i class="bi bi-eye"></i> Mostrar Perfil
                         </button>
-                        <button class="btn me-2" onclick="ocultarTarjeta()">
+                        <!-- <button class="btn me-2" onclick="ocultarTarjeta()">
                             <i class="bi bi-eye-slash"></i> Ocultar Perfil
-                        </button>
+                        </button> -->
                         
                     </div>            
             </section>
@@ -51,6 +51,15 @@
     </header>
     <main>
         <h1>Peliculas Studio Ghibli</h1>
+        
+        
+        <section>
+            <button class="btn btn-outline-warning " onclick="cargarApi()">Mostrar Todas Peliculas</button>
+        </section>
+        <section id="datos">
+
+        </section>
+        
         <section class="container py-4">
             <div class="row mb-3">
                 <div class="col-12 col-md-8">
@@ -67,12 +76,6 @@
             </div>   
         </section>
 
-        <section>
-            <button class="btn btn-outline-warning " onclick="cargarApi()">Mostrar Todas Peliculas</button>
-        </section>
-        <section id="datos">
-
-        </section>
     </main>
     <footer>
 

@@ -46,6 +46,7 @@ const cargarApi = async() => {
         const respuesta = await fetch(API_URL);
         todasPeliculas = await respuesta.json();
         console.log("Peliculas Obtenidas", todasPeliculas);
+        mostrarPelis(todasPeliculas);
         
     } catch (error) {
         console.error("Hubo un error inesperado: ", error);
@@ -54,6 +55,7 @@ const cargarApi = async() => {
 }
 
 // TARJETAS HTML DE PELICULAS
+
 function mostrarPelis(movies){
 const resultsContainer = document.getElementById('resultsInfo');
     
